@@ -1,5 +1,5 @@
 import socket
-import RobotDrive as Drive
+#import RobotDrive as Drive
 
 serversocket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 # bind the socket to a public host and port
@@ -15,7 +15,6 @@ def separateCommands(data):
        command = x.strip()
        DriveCommands.append(command) #create new list of properly formatted commands
     return Drive_Command_List #ready to send to drive script
-    
 
 while True: #loop
     c, addr = serversocket.accept() #connects with client
