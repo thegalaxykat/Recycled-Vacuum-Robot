@@ -14,8 +14,11 @@ Lbackward = 16
 left_wheel = Motor(Lforward, Lbackward)
 right_wheel = Motor(Rforward,Rbackward)
 
+
+
 while True:
     right_wheel.forward()
-    sleep(2)
-    right_wheel.backward()
-    sleep(2)
+    left_wheel.forward()
+    # sleep(2)
+    # right_wheel.backward()
+    # sleep(2)
