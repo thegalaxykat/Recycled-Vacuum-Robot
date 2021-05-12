@@ -1,4 +1,3 @@
-#import SocketServer as Server
 from gpiozero import Motor, LED
 from time import sleep
 from signal import pause
@@ -14,11 +13,34 @@ Lbackward = 16
 left_wheel = Motor(Lforward, Lbackward)
 right_wheel = Motor(Rforward,Rbackward)
 
+def Stop(time):
+    right_wheel.stop()
+    left_wheel.stop()
+    sleep(time)
 
-
-while True:
+def Forward(time):
     right_wheel.forward()
     left_wheel.forward()
-    # sleep(2)
-    # right_wheel.backward()
-    # sleep(2)
+    sleep(time)
+    Stop(0)
+
+def Backward(time):
+    right_wheel.backward()
+    left_wheel.backward()
+    sleep(time)
+    Stop(0)
+
+def TurnLeft(time):
+    right_wheel.forward()
+    left_wheel.backward()
+    sleep(time)
+    Stop(0)
+
+def TurnRight(time):
+    right_wheel.backward()
+    left_wheel.forward()
+    sleep(time)
+    Stop(0)
+
+def Drive(direction, time):
+    print ("Driving " + direction + " for " + str(time) + " seconds.")
