@@ -3,7 +3,7 @@ import RobotControl as Robot
 
 serversocket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 # bind the socket to a public host and port
-serversocket.bind(('0.0.0.0', 1776)) # pardon me are you Aaron Burr, sir?
+serversocket.bind(('0.0.0.0', 1777)) # pardon me are you Aaron Burr, sir?
 
 serversocket.listen(5) # listen for client connections
 
@@ -15,13 +15,19 @@ def separateCommands(data):
     #* commands are now in a list as ['direction', 'time']
 
 while True: # loop
-    c, addr = serversocket.accept() # connects with client
-    c.send(bytes("-------------------- \nEnter direction and time separated by ','\n",'ascii')) #send text back
-    
-    data = c.recv(1024) # reveive raw data
-    commandList = separateCommands(data) # separate commands into individual strings
+    try:
+        c, addr = serversocket.accept() # connects with client
+        c.send(bytes("-------------------- \nEnter direction and time separated by ','\n",'ascii')) #send text back
+        
+        data = c.recv(1024) # reveive raw data
+        commandList = separateCommands(data) # separate commands into individual strings
 
-    c.close() # closes connection
-    print ('\nConnection closed.\n')
+        #c.close() # closes connection
+        #print ('\nConnection closed.\n')
 
-    Robot.Drive(commandList[0], float(commandList[1]))
+        Robot.Drive(commandList[0], float(commandList[1]))
+    except:
+        print("SockerServer.py.WhileLoop :(")
+    finally:
+        c.close() # closes connection
+        print ('\nConnection closed.\n')
