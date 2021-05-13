@@ -22,9 +22,6 @@ while True: # loop
         data = c.recv(1024) # reveive raw data
         commandList = separateCommands(data) # separate commands into individual strings
 
-        #c.close() # closes connection
-        #print ('\nConnection closed.\n')
-
         Robot.Drive(commandList[0], float(commandList[1]))
     except:
         print("SockerServer.py.WhileLoop :(")
