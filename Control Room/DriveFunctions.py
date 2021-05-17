@@ -11,7 +11,7 @@ def SendData(direction, time):
     print("connected to server")
 
     # send commands
-    commands = (direction + ', ' + time)
+    commands = (direction + ', ' + str(time))
     data = commands.encode("utf-8")
     serversocket.send(data)
     serversocket.close
@@ -19,7 +19,7 @@ def SendData(direction, time):
 
 def forwardButton():
     print ("forward button pressed")
-    SendData('forward', 10)
+    SendData('forward', 2.5)
 
 
 def leftButton():
@@ -34,9 +34,9 @@ def rightButton():
 
 def backButton():
     print ("back button pressed")
-    SendData('backward', 5)
+    SendData('backward', 2)
 
 
 def stopButton():
     print ("stop button pressed")
-    SendData(stop)
+    SendData("stop")
