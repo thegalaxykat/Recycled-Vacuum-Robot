@@ -1,9 +1,13 @@
 import socket
+from gpiozero import LED
 import RobotControl as Robot
 
 serversocket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 # bind the socket to a public host and port
 serversocket.bind(('0.0.0.0', 1776)) # pardon me are you Aaron Burr, sir?
+
+led = LED(23)
+led.on()
 
 serversocket.listen(5) # listen for client connections
 
