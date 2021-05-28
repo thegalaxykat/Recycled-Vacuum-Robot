@@ -42,6 +42,10 @@ def TurnRight(time):
     sleep(time)
     Stop()
 
+def PlaySound(sound):
+    # note: each sound (1-5) is assigned a number to identify it
+    print("playing sound "+str(sound)+".")
+
 def Drive(direction, time):
     print ("Driving " + direction + " for " + str(time) + " seconds.")
 
@@ -55,6 +59,8 @@ def Drive(direction, time):
         TurnRight(time)
     elif (direction == 'left'):
         TurnLeft(time)
+    elif (direction == 'sound'): #if the "direction" is sound don't move, play a sound
+        PlaySound(int(time)) #where time holds the place of the sound's id number    
     else:
         print("sorry, that's not a valid command.")
         Stop()
