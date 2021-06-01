@@ -1,6 +1,7 @@
 from gpiozero import Motor, LED
 from time import sleep
 from signal import pause
+from playsound import playsound
 
 # Right motor GPIO pins 26,20
 Rforward = 26
@@ -45,6 +46,10 @@ def TurnRight(time):
 def PlaySound(sound):
     # note: each sound (1-5) is assigned a number to identify it
     print("playing sound "+str(sound)+".")
+    # if (sound == 1):
+    audio = 'sounds/R2D2.mp3'
+        
+    playsound(audio)
 
 def Drive(direction, time):
     print ("Driving " + direction + " for " + str(time) + " seconds.")
